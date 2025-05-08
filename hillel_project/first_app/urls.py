@@ -9,5 +9,6 @@ urlpatterns = [
     path('employees/update/<int:pk>/', generic_views.EmployeeUpdateView.as_view(), name='employee_update'),
     path('employees/delete/<int:pk>/', func_views.employee_delete, name='employee_delete'),
     path('querysets/', func_views.queryset_route, name='querysets'),
+    path('salary-calculator/', generic_views.SalaryCalculatorView.as_view(), name="salary_calc")
 
 ]

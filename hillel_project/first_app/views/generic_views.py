@@ -1,11 +1,16 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
+from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, FormView
 
 from first_app.models import Employee
 from first_app.forms import EmployeeForm
 from first_app.utils import is_user_superuser
+from first_app.mixins import UserIsAdminMixin
+from first_app.forms import SalaryForm
+
+from salary_calculator import CalculateMonthRateSalary
 
 
 class EmployeeListView(ListView):
@@ -26,29 +31,50 @@ class EmployeeListView(ListView):
         return queryset
 
 
-class EmployeeCreateView(UserPassesTestMixin, CreateView):
+class EmployeeCreateView(UserIsAdminMixin, CreateView):
     model = Employee
     form_class = EmployeeForm
     template_name = 'employee_form.html'
     success_url = reverse_lazy('employee_list')
 
-    def test_func(self):
-        return is_user_superuser(self.request.user)
 
-class EmployeeUpdateView(UserPassesTestMixin, UpdateView):
+
+class EmployeeUpdateView(UserIsAdminMixin, UpdateView):
     model = Employee
     form_class = EmployeeForm
     template_name = 'employee_form.html'
     success_url = reverse_lazy('employee_list')
 
-    def test_func(self):
-        return is_user_superuser(self.request.user)
 
-
-class EmployeeDeleteView(UserPassesTestMixin, DeleteView):
+class EmployeeDeleteView(UserIsAdminMixin, DeleteView):
     model = Employee
     template_name = 'employee_confirm_delete.html'
     success_url = reverse_lazy('employee_list')
 
-    def test_func(self):
-        return is_user_superuser(self.request.user)
+
+
+class SalaryCalculatorView(UserIsAdminMixin, FormView):
+    template_name = "salary_calculator.html"
+    form_class = SalaryForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, context={'form': form})
+
+
+    def form_valid(self, form):
+        cleaned_data = form.cleaned_data
+        employee = cleaned_data.get("employee")
+
+
+        calc = CalculateMonthRateSalary(employee=employee)
+        days = {day: day_type for day, day_type in cleaned_data.items() if day.startswith("day_")}
+
+        salary = calc.calculate_salary(days_dict=days)
+        return render(
+            request=self.request,
+            template_name=self.template_name,
+            context={'form': form, 'calculated_salary': salary}
+        )
+
+
