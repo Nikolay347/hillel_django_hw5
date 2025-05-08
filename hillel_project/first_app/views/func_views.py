@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from first_app.models import Employee
-from forms import EmployeeForm
-from utils import is_user_superuser
+from first_app.forms import EmployeeForm
+from first_app.utils import is_user_superuser
+from first_app.querysets import examples
 
 
 @user_passes_test(is_user_superuser)
@@ -43,3 +45,10 @@ def employee_delete(request, pk):
         employee.delete()
         return redirect(reverse('employee_list'))
     return render(request, 'employee_confirm_delete.html', {'object': employee})
+
+
+
+
+def queryset_route(request):
+    examples()
+    return HttpResponse()

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Employee, Department, Position
+from .models import Employee, Department, Position, Experiment, Article
 
 
 @admin.register(Employee)
@@ -16,3 +16,13 @@ class DepartmentAdmin(admin.ModelAdmin):
 @admin.register(Position)
 class PositionAdmin(admin.ModelAdmin):
     list_display = ("title", "is_manager", "is_active")
+
+
+
+# @admin.register(Experiment)
+# class AdminExperiment(admin.ModelAdmin):
+#     pass
+
+@admin.register(Article)
+class ArticleExperiment(admin.ModelAdmin):
+    list_display = ("title", "status", "created_at")

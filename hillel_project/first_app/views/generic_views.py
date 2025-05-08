@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from first_app.models import Employee
-from forms import EmployeeForm
-from utils import is_user_superuser
+from first_app.forms import EmployeeForm
+from first_app.utils import is_user_superuser
 
 
 class EmployeeListView(ListView):
