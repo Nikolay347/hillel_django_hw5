@@ -1,4 +1,6 @@
 .venv
 .idea
 *.xml
+*.log
+*.sqlite3
 poetry.lock
