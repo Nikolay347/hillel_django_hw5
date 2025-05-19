@@ -1,10 +1,11 @@
 import logging
 import datetime
 
+from django.core.cache import cache
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView, FormView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, FormView, DetailView
 
 from first_app.models import Employee
 from first_app.forms import EmployeeForm
@@ -53,6 +54,24 @@ class EmployeeDeleteView(UserIsAdminMixin, DeleteView):
     model = Employee
     template_name = 'employee_confirm_delete.html'
     success_url = reverse_lazy('employee_list')
+
+
+class EmployeeDetailsView(UserIsAdminMixin, DetailView):
+    model = Employee
+    template_name = "employee_details.html"
+
+
+    def get_object(self, queryset=None):
+        e_id = self.kwargs.get("pk")
+        employee = cache.get(f"employee_{e_id}")
+        if not employee:
+            logger.warning(f"Employee {e_id} NOT IN CACHE")
+            employee = get_object_or_404(Employee, pk=e_id)
+            cache.set(f"employee_{e_id}", employee, timeout=5)
+        else:
+            logger.info(f"Employee {e_id} WAS IN CACHE")
+
+        return employee
 
 
 

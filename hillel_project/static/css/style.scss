@@ -1,0 +1,28 @@
+/* static/scss/style.scss */
+$body-font: Arial, sans-serif;
+$header-bg-color: #5086bc;
+$header-padding: 20px;
+$logo-size: 20px;
+$employee-list-margin: 20px;
+$employee-list-padding: 10px;
+$employee-list-border-color: #177c30;
+
+body {
+    font-family: $body-font;
+}
+
+.header {
+    background-color: $header-bg-color;
+    padding: $header-padding;
+    text-align: center;
+    img {
+        width: $logo-size;
+        height: $logo-size;
+    }
+}
+
+.employee-list {
+    margin: $employee-list-margin;
+    padding: $employee-list-padding;
+    border: 1px solid $employee-list-border-color;
+}

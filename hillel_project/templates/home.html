@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Home' %}{% endblock title %}
+
+{% block content %}
+<div class="header">
+    <img src="{% static 'img/logo.png' %}" alt="Logo">
+    <h1>Welcome to HR System</h1>
+</div>
+
+<div class="jumbotron">
+  <h1 class="display-4">{% trans 'Welcome!' %}</h1>
+  <p class="lead">{% trans 'This is a simple home page for the HR application.' %}</p>
+  <hr class="my-4">
+  <p>{% trans 'You can manage employees or calculate salaries from here.' %}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'employee_list' %}" role="button">{% trans 'Employee List' %}</a>
+    <a class="btn btn-success btn-lg" href="{% url 'salary_calc' %}" role="button">{% trans 'Salary Calculator' %}</a>
+  </p>
+</div>
+{% endblock content %}
