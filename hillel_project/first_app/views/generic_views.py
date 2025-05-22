@@ -1,10 +1,12 @@
 import logging
 import datetime
 
+from django.contrib import messages
 from django.core.cache import cache
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
+from django.utils.translation.trans_null import gettext_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, FormView, DetailView
 
 from first_app.models import Employee
@@ -18,7 +20,7 @@ logger = logging.getLogger('default')
 
 class EmployeeListView(ListView):
     model = Employee
-    template_name = "employee_list.html"
+    template_name = "first_app/employee_list.html"
     context_object_name = "employees"
 
     def get_queryset(self):
@@ -38,15 +40,26 @@ class EmployeeListView(ListView):
 class EmployeeCreateView(UserIsAdminMixin, CreateView):
     model = Employee
     form_class = EmployeeForm
-    template_name = 'employee_form.html'
+    template_name = 'first_app/employee_form.html'
     success_url = reverse_lazy('employee_list')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.warning(self.request, "Employee creates successfully")
+        return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, gettext_lazy("employee_create_error"))
+        return super().form_invalid(form)
+
+
 
 
 
 class EmployeeUpdateView(UserIsAdminMixin, UpdateView):
     model = Employee
     form_class = EmployeeForm
-    template_name = 'employee_form.html'
+    template_name = 'first_app/employee_form.html'
     success_url = reverse_lazy('employee_list')
 
 
@@ -58,7 +71,7 @@ class EmployeeDeleteView(UserIsAdminMixin, DeleteView):
 
 class EmployeeDetailsView(UserIsAdminMixin, DetailView):
     model = Employee
-    template_name = "employee_details.html"
+    template_name = "first_app/employee_details.html"
 
 
     def get_object(self, queryset=None):

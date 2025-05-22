@@ -34,6 +34,33 @@
             </div>
         </div>
     </form>
+    <div>
+        <ul>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'employee_details' user.pk %}" class="nav-link">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" alt="Avatar" width=100>
+                        {% else %}
+                            <h3> {{user.first_name }} {{user.last_name }}</h3>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+<!--                    <a href="{% url 'accounts:logout' %}" class="nav-link">Logout</a>-->
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'accounts:login' %}" class="nav-link">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
 </nav>
 
 
