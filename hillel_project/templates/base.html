@@ -1,0 +1,78 @@
+{% load i18n %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+
+    <title>{% block title %} Base Html {% endblock %}</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form action="{% url 'set_language' %}" method="post" class="form-inline my-2 my-lg-0 ml-auto">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}">
+        <div class="input-group">
+            <select name="language" class="custom-select">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">{% trans 'Change Language' %}</button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <ul>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'employee_details' user.pk %}" class="nav-link">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" alt="Avatar" width=100>
+                        {% else %}
+                            <h3> {{user.first_name }} {{user.last_name }}</h3>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+<!--                    <a href="{% url 'accounts:logout' %}" class="nav-link">Logout</a>-->
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'accounts:login' %}" class="nav-link">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</nav>
+
+
+<div class="container mt-5">
+    {% block content %}
+    <h1> BASE HTML </h1>
+    {% endblock %}
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

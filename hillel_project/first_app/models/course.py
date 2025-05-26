@@ -1,7 +1,7 @@
-from django.db import models
-
-
-class Course(models.Model):
-    name = models.TextField()
-    description = models.TextField()
-
+# from django.db import models
+#
+#
+# class Course(models.Model):
+#     name = models.TextField()
+#     description = models.TextField()
+#
