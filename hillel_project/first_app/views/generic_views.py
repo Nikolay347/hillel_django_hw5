@@ -1,16 +1,14 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
+#hillel_project/first_app/views/generic_views.py
+
 from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, FormView
-
 from first_app.models import Employee
-from first_app.forms import EmployeeForm
-from first_app.utils import is_user_superuser
+from first_app.forms import EmployeeForm, SalaryForm
 from first_app.mixins import UserIsAdminMixin
-from first_app.forms import SalaryForm
+from first_app.salary_calculator import CalculateMonthRateSalary
 
-from salary_calculator import CalculateMonthRateSalary
 
 
 class EmployeeListView(ListView):
@@ -46,6 +44,7 @@ class EmployeeUpdateView(UserIsAdminMixin, UpdateView):
     success_url = reverse_lazy('employee_list')
 
 
+
 class EmployeeDeleteView(UserIsAdminMixin, DeleteView):
     model = Employee
     template_name = 'employee_confirm_delete.html'
@@ -76,5 +75,6 @@ class SalaryCalculatorView(UserIsAdminMixin, FormView):
             template_name=self.template_name,
             context={'form': form, 'calculated_salary': salary}
         )
+
 
 

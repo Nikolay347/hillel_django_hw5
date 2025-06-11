@@ -8,3 +8,4 @@ class WorkDayEnum(StrEnum):
     WEEKEND = "weekend"
     UNPAID_DAY = "unpaid_day"
 
+

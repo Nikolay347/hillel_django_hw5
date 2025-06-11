@@ -22,7 +22,7 @@ class CalculateMonthRateSalary(AbstractSalaryCalculator):
 
     def __init__(self, employee: Employee):
         super().__init__(employee)
-        self._daily_payment = 0
+        self._daily_payment = 500
 
     @staticmethod
     def _calculate_base_work_days(days_dict):
@@ -47,6 +47,11 @@ class CalculateMonthRateSalary(AbstractSalaryCalculator):
 
 
     def calculate_salary(self, days_dict: dict[str, int]):
+        base_days = self._calculate_base_work_days(days_dict)
+
+        if base_days == 0:
+            raise ValueError("Неможливо розрахувати зарплату без робочих днів")
+
         self._daily_payment = self._get_daily_salary(base_working_days=self._calculate_base_work_days(days_dict))
 
         work_days_payment = self._get_work_days_payment(days_dict)
