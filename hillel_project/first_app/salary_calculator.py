@@ -47,6 +47,11 @@ class CalculateMonthRateSalary(AbstractSalaryCalculator):
 
 
     def calculate_salary(self, days_dict: dict[str, int]):
+        base_days = self._calculate_base_work_days(days_dict) #for addit.check.division by zero protection for working days
+
+        if base_days == 0:                                                      #same
+            raise ValueError("Неможливо розрахувати зарплату без робочих днів") #same
+
         self._daily_payment = self._get_daily_salary(base_working_days=self._calculate_base_work_days(days_dict))
 
         work_days_payment = self._get_work_days_payment(days_dict)
