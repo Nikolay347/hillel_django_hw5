@@ -8,6 +8,7 @@ from first_app.models import Employee
 from first_app.forms import EmployeeForm, SalaryForm #Combining modules of the same class
 from first_app.utils import is_user_superuser
 from first_app.mixins import UserIsAdminMixin
+from first_app.forms import SalaryForm
 
 
 from first_app.salary_calculator import CalculateMonthRateSalary    #Changed the module call path
