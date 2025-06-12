@@ -17,8 +17,12 @@ class EmployeeForm(forms.ModelForm):
 
 
 class SalaryForm(forms.Form):
-    employee = forms.ModelChoiceField(queryset=Employee.objects.all())
-
+    employee = forms.ModelChoiceField(
+        queryset=Employee.objects.all(),
+        error_messages={
+            'required': 'Потрібно обрати працівника.'
+        }
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -47,3 +51,29 @@ class SalaryForm(forms.Form):
                     choices=[(option.name, option.value) for option in WorkDayEnum],
                     initial=WorkDayEnum.WORKING_DAY.name,
                 )
+
+# Adding sick, holiday and employee validation checks(validation = message if the user has not selected an employee
+# or if sick days > 5, or if holiday days > 3)
+    def clean_employee(self):
+        employee = self.cleaned_data.get('employee')
+        if not employee:
+            raise forms.ValidationError("Потрібно обрати працівника.")
+        return employee
+
+    def clean(self):
+        cleaned_data = super().clean()
+        sick_days_count = 0
+        holiday_days_count = 0
+
+        for key, value in cleaned_data.items():
+            if key.startswith("day_") and value == WorkDayEnum.SICK_DAY.name:
+                sick_days_count += 1
+            if key.startswith("day_") and value == WorkDayEnum.HOLIDAY.name:
+                holiday_days_count += 1
+
+        if sick_days_count > 5:
+            raise forms.ValidationError(f"Кількість лікарняних днів не може перевищувати 5. Зараз: {sick_days_count}")
+        if holiday_days_count > 3:
+            raise forms.ValidationError(f"Кількість святкових днів не може перевищувати 3. Зараз: {holiday_days_count}")
+
+        return cleaned_data
