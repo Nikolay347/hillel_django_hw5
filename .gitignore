@@ -3,3 +3,9 @@
 *.xml
 poetry.lock
 
+__pycache__/
+*.pyc
+
+*.log
+*.log.*
+*.sqlite3
