@@ -7,11 +7,12 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, FormView
 
 from first_app.models import Employee
+
 from first_app.forms import EmployeeForm, SalaryForm #Combining modules of the same class
+
 from first_app.mixins import UserIsAdminMixin
 
-
-from first_app.salary_calculator import CalculateMonthRateSalary    #Changed the module call path
+from first_app.salary_calculator import CalculateMonthRateSalary
 
 logger = logging.getLogger('default')
 
