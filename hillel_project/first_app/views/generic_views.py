@@ -1,4 +1,6 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
+import logging
+import datetime
+
 from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -6,12 +8,12 @@ from django.views.generic import ListView, UpdateView, DeleteView, CreateView, F
 
 from first_app.models import Employee
 from first_app.forms import EmployeeForm, SalaryForm #Combining modules of the same class
-from first_app.utils import is_user_superuser
 from first_app.mixins import UserIsAdminMixin
 
 
 from first_app.salary_calculator import CalculateMonthRateSalary    #Changed the module call path
 
+logger = logging.getLogger('default')
 
 class EmployeeListView(ListView):
     model = Employee
@@ -28,6 +30,7 @@ class EmployeeListView(ListView):
                 Q(last_name__icontains=search) |
                 Q(position__title__icontains=search),
             )
+        logger.info(f"Render employees list for user {self.request.user}")
         return queryset
 
 
@@ -71,10 +74,13 @@ class SalaryCalculatorView(UserIsAdminMixin, FormView):
         days = {day: day_type for day, day_type in cleaned_data.items() if day.startswith("day_")}
 
         salary = calc.calculate_salary(days_dict=days)
+        calc.save_salary(salary, datetime.date.today())
         return render(
             request=self.request,
             template_name=self.template_name,
             context={'form': form, 'calculated_salary': salary}
         )
-
-
+# Temporary post-method for exception call! Must be deleted or be nullified for norm work the project!!!
+    #def post(self, request, *args, **kwargs):
+        #raise Exception("Test error for exception call")
+        #return super().post(request, *args, **kwargs)

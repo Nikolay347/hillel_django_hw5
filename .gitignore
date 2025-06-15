@@ -1,11 +1,10 @@
 .venv
 .idea
 *.xml
+*.log.*
+*.log
+*.sqlite3
 poetry.lock
 
 __pycache__/
 *.pyc
-
-*.log
-*.log.*
-*.sqlite3
