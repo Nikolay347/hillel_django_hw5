@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 14:55+0300\n"
+"POT-Creation-Date: 2025-06-19 18:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,30 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: .\templates\base.html:31
+msgid "Change Language"
+msgstr "Змінити мову"
+
+#: .\templates\employee_confirm_delete.html:6
+#, fuzzy
+#| msgid "Delete"
+msgid "Confirm Delete"
+msgstr "Підтвердіть видалення"
+
+#: .\templates\employee_confirm_delete.html:7
+msgid "Are you sure you want to delete"
+msgstr "Ви впевненні щодо видалення"
+
+#: .\templates\employee_confirm_delete.html:10
+#: .\templates\employee_list.html:39
+msgid "Delete"
+msgstr "Видалити"
+
+#: .\templates\employee_confirm_delete.html:11
+msgid "Cancel"
+msgstr "Відміна"
+
 #: .\templates\employee_list.html:4
 msgid "Employee List"
 msgstr "Перелік співробітників"
@@ -55,7 +79,3 @@ msgstr "Дії"
 #: .\templates\employee_list.html:38
 msgid "Update"
 msgstr "Оновити"
-
-#: .\templates\employee_list.html:39
-msgid "Delete"
-msgstr "Видалити"

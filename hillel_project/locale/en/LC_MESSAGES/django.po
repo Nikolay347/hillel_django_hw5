@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 15:02+0300\n"
+"POT-Creation-Date: 2025-06-19 18:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\base.html:31
+msgid "Change Language"
+msgstr "Змінити мову"
+
+#: .\templates\employee_confirm_delete.html:6
+#, fuzzy
+#| msgid "Delete"
+msgid "Confirm Delete"
+msgstr "Confirm Delete"
+
+#: .\templates\employee_confirm_delete.html:7
+msgid "Are you sure you want to delete"
+msgstr "Are you sure you want to delete?"
+
+#: .\templates\employee_confirm_delete.html:10
+#: .\templates\employee_list.html:39
+msgid "Delete"
+msgstr "Delete"
+
+#: .\templates\employee_confirm_delete.html:11
+msgid "Cancel"
+msgstr "Cancel"
+
 #: .\templates\employee_list.html:4
 msgid "Employee List"
 msgstr "Employee List"
@@ -52,7 +76,3 @@ msgstr "Actions"
 #: .\templates\employee_list.html:38
 msgid "Update"
 msgstr "Update"
-
-#: .\templates\employee_list.html:39
-msgid "Delete"
-msgstr "Delete"
