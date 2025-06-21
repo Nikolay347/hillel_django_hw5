@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 14:18+0300\n"
+"POT-Creation-Date: 2025-06-21 16:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,14 +21,20 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
+#: .\first_app\models\department.py:5
+#, fuzzy
+#| msgid "Username"
+msgid "name"
+msgstr "Назва відділу"
+
 #: .\first_app\models\position.py:5
 msgid "Title"
-msgstr "Назва"
+msgstr "Назва позиції"
 
 #: .\first_app\models\position.py:9
 #, fuzzy
 #| msgid "Position"
-msgid "Job Descrition"
+msgid "Job Description"
 msgstr "Опис позиції"
 
 #: .\first_app\models\position.py:10
@@ -59,7 +65,9 @@ msgid "Cancel"
 msgstr "Відміна"
 
 #: .\templates\employee_form.html:10
-msgid "Username"
+#, fuzzy
+#| msgid "Username"
+msgid "Username:"
 msgstr "Логін"
 
 #: .\templates\employee_form.html:20 .\templates\employee_list.html:22
