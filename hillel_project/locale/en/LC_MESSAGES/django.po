@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 18:13+0300\n"
+"POT-Creation-Date: 2025-06-20 14:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\first_app\models\position.py:5
+msgid "Title"
+msgstr "Title"
+
+#: .\first_app\models\position.py:9
+#, fuzzy
+#| msgid "Position"
+msgid "Job Descrition"
+msgstr "Position description"
+
+#: .\first_app\models\position.py:10
+msgid "Monthly Rate"
+msgstr "Monthly Rate"
 
 #: .\templates\base.html:31
 msgid "Change Language"
@@ -41,6 +55,30 @@ msgstr "Delete"
 msgid "Cancel"
 msgstr "Cancel"
 
+#: .\templates\employee_form.html:10
+msgid "Username"
+msgstr "Username"
+
+#: .\templates\employee_form.html:20 .\templates\employee_list.html:22
+msgid "First Name"
+msgstr "First Name"
+
+#: .\templates\employee_form.html:30 .\templates\employee_list.html:23
+msgid "Last Name"
+msgstr "Last Name"
+
+#: .\templates\employee_form.html:40 .\templates\employee_list.html:24
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\employee_form.html:50 .\templates\employee_list.html:25
+msgid "Position"
+msgstr "Position"
+
+#: .\templates\employee_form.html:66
+msgid "Save"
+msgstr "Save"
+
 #: .\templates\employee_list.html:4
 msgid "Employee List"
 msgstr "Employee List"
@@ -53,22 +91,6 @@ msgstr "Filter"
 msgid "Salary Calculator"
 msgstr "Salary Calculator"
 
-#: .\templates\employee_list.html:22
-msgid "First Name"
-msgstr "First Name"
-
-#: .\templates\employee_list.html:23
-msgid "Last Name"
-msgstr "Last Name"
-
-#: .\templates\employee_list.html:24
-msgid "Email"
-msgstr "Email"
-
-#: .\templates\employee_list.html:25
-msgid "Position"
-msgstr "Position"
-
 #: .\templates\employee_list.html:26
 msgid "Actions"
 msgstr "Actions"
@@ -76,3 +98,21 @@ msgstr "Actions"
 #: .\templates\employee_list.html:38
 msgid "Update"
 msgstr "Update"
+
+#: .\templates\salary_calculator.html:7
+msgid "Filling out the form Errors:"
+msgstr "Filling out the form Errors:"
+
+#: .\templates\salary_calculator.html:17
+#, fuzzy
+#| msgid "Salary Calculator"
+msgid "Salary calculator"
+msgstr "Salary Calculator"
+
+#: .\templates\salary_calculator.html:30
+msgid "Calculated Salary"
+msgstr "Calculated Salary"
+
+#: .\templates\salary_calculator.html:73
+msgid "Calculate Salary"
+msgstr "Calculate Salary"

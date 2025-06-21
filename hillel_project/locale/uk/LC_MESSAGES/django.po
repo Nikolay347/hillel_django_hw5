@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 18:13+0300\n"
+"POT-Creation-Date: 2025-06-20 14:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,29 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
+#: .\first_app\models\position.py:5
+msgid "Title"
+msgstr "Назва"
+
+#: .\first_app\models\position.py:9
+#, fuzzy
+#| msgid "Position"
+msgid "Job Descrition"
+msgstr "Опис позиції"
+
+#: .\first_app\models\position.py:10
+msgid "Monthly Rate"
+msgstr "Ставка"
+
 #: .\templates\base.html:31
 msgid "Change Language"
-msgstr "Змінити мову"
+msgstr "Обрати мову"
 
 #: .\templates\employee_confirm_delete.html:6
 #, fuzzy
 #| msgid "Delete"
 msgid "Confirm Delete"
-msgstr "Підтвердіть видалення"
+msgstr "Підтвердження видалення"
 
 #: .\templates\employee_confirm_delete.html:7
 msgid "Are you sure you want to delete"
@@ -44,6 +58,30 @@ msgstr "Видалити"
 msgid "Cancel"
 msgstr "Відміна"
 
+#: .\templates\employee_form.html:10
+msgid "Username"
+msgstr "Логін"
+
+#: .\templates\employee_form.html:20 .\templates\employee_list.html:22
+msgid "First Name"
+msgstr "Ім'я"
+
+#: .\templates\employee_form.html:30 .\templates\employee_list.html:23
+msgid "Last Name"
+msgstr "Прізвище"
+
+#: .\templates\employee_form.html:40 .\templates\employee_list.html:24
+msgid "Email"
+msgstr "Е-Пошта"
+
+#: .\templates\employee_form.html:50 .\templates\employee_list.html:25
+msgid "Position"
+msgstr "Позиція"
+
+#: .\templates\employee_form.html:66
+msgid "Save"
+msgstr "Зберегти"
+
 #: .\templates\employee_list.html:4
 msgid "Employee List"
 msgstr "Перелік співробітників"
@@ -54,23 +92,7 @@ msgstr "Знайти"
 
 #: .\templates\employee_list.html:17
 msgid "Salary Calculator"
-msgstr "Калькулятор зарплатні"
-
-#: .\templates\employee_list.html:22
-msgid "First Name"
-msgstr "Ім'я"
-
-#: .\templates\employee_list.html:23
-msgid "Last Name"
-msgstr "Прізвище"
-
-#: .\templates\employee_list.html:24
-msgid "Email"
-msgstr "Е-Пошта"
-
-#: .\templates\employee_list.html:25
-msgid "Position"
-msgstr "Позиція"
+msgstr "Калькулятор зарплати"
 
 #: .\templates\employee_list.html:26
 msgid "Actions"
@@ -79,3 +101,21 @@ msgstr "Дії"
 #: .\templates\employee_list.html:38
 msgid "Update"
 msgstr "Оновити"
+
+#: .\templates\salary_calculator.html:7
+msgid "Filling out the form Errors:"
+msgstr "Помилки при заповненні форми:"
+
+#: .\templates\salary_calculator.html:17
+#, fuzzy
+#| msgid "Salary Calculator"
+msgid "Salary calculator"
+msgstr "Калькулятор зарплати"
+
+#: .\templates\salary_calculator.html:30
+msgid "Calculated Salary"
+msgstr "Розрахована зарплата"
+
+#: .\templates\salary_calculator.html:73
+msgid "Calculate Salary"
+msgstr "Розрахувати зарплату"
