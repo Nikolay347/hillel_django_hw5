@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -110,16 +111,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
+
+LANGUAGE_CODE = 'en'
+
 LANGUAGES = [
     ("en", "English"),
     ("uk", "Ukrainian"),
 ]
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
 LOCALE_PATHS = (
     BASE_DIR /"locale",
 )
 
-LANGUAGE_CODE = 'en'
+
 
 TIME_ZONE = 'UTC'
 

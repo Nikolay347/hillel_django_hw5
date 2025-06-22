@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 16:29+0300\n"
+"POT-Creation-Date: 2025-06-22 13:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr "Назва позиції"
 #: .\first_app\models\position.py:9
 #, fuzzy
 #| msgid "Position"
-msgid "Job Description"
+msgid "Description"
 msgstr "Опис позиції"
 
 #: .\first_app\models\position.py:10

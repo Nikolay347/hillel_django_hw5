@@ -6,7 +6,7 @@ class Position(models.Model):
     is_manager = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     department = models.ForeignKey("Department", on_delete=models.CASCADE)
-    description = models.CharField(verbose_name=_("Job Description"), max_length=500, default="")
+    description = models.CharField(verbose_name=_("Description"), max_length=500, default="")
     monthly_rate = models.IntegerField(default=0, verbose_name=_("Monthly Rate"))
 
 
