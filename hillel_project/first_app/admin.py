@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Employee, Department, Position, Experiment, Article
-
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
@@ -9,7 +9,7 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Department)
-class DepartmentAdmin(admin.ModelAdmin):
+class DepartmentAdmin(TranslationAdmin):
     list_display = ('name', 'parent_department')
 
 
