@@ -8,6 +8,7 @@ from first_app.models import MonthlySalary
 class Command(BaseCommand):
     help = "Set all salaries in this month 'is_paid' = True"
 
+
     def handle(self, *args, **options):
         current_month = timezone.now().month
         current_year = timezone.now().year

@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 from pathlib import Path
 
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'general',
     'first_app',
+
 ]
 
 MIDDLEWARE = [
@@ -111,6 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
+LANGUAGES = [
+    ("en", "English"),
+    ("uk", "Ukrainian"),
+]
+
 
 LANGUAGE_CODE = 'en'
 

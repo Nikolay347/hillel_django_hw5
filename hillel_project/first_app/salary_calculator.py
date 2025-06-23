@@ -64,16 +64,19 @@ class CalculateMonthRateSalary(AbstractSalaryCalculator):
         salary = work_days_payment + sick_days_payment
         return salary if salary <= self.employee.position.monthly_rate else self.employee.position.monthly_rate
 
+
     def save_salary(self, salary: int, date: datetime.date):
         start_month_date = date.replace(day=1)
 
         if MonthlySalary.objects.filter(date=start_month_date, employee=self.employee).exists():
-            logger.warning(
-                f"Salary for Employee {self.employee} for {start_month_date.month}/{start_month_date.year} already paid!")
+             logger.warning(f"Salary for Employee {self.employee} for {start_month_date.month}/{start_month_date.year} already paid!")
+
         else:
             MonthlySalary.objects.update_or_create(
                 date=start_month_date,
                 salary=salary,
                 employee=self.employee,
                 is_paid=True
+
             )
+

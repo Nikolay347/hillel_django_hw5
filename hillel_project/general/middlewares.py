@@ -23,6 +23,7 @@ class RequestStatisticMiddleware(MiddlewareMixin):
             stats.requests += 1
             stats.save()
 
+
     def process_exception(self, request, exception):
         if request.user.is_authenticated and not request.path.startswith("/admin"):
             stats, is_created = RequestStatistics.objects.get_or_create(user=request.user)
@@ -32,3 +33,4 @@ class RequestStatisticMiddleware(MiddlewareMixin):
         logger.exception("Exception caught in middleware", exc_info=exception)
         # To check this exception was developed a temporary method named "post" in hillel_project/first_app/views/generic_views.py
         # Must be deleted or be nullified after check for norm work the project!!
+

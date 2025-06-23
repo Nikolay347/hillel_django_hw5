@@ -25,4 +25,6 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('app/', include('first_app.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+
 )
+
