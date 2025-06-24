@@ -5,8 +5,9 @@ class Position(models.Model):
     title = models.CharField(verbose_name=_("Title"), max_length=200)
     is_manager = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    department = models.ForeignKey("Department", on_delete=models.CASCADE)
+    description = models.CharField(verbose_name=_("Description"), max_length=500, default="")
     monthly_rate = models.IntegerField(default=0, verbose_name=_("Monthly Rate"))
-
 
     def __str__(self):
         return f"{self.title} ({self.department})"
